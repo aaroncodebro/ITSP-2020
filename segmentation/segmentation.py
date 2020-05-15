@@ -18,7 +18,6 @@ dilate = cv2.dilate(thresh, kernel , iterations=12)
 cnts = cv2.findContours(dilate.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 cnts = cnts[0] if len(cnts) == 2 else cnts[1]
 
-contours = []
 
 threshold_min_area = 0
 threshold_max_area = 100000
