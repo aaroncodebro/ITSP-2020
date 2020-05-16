@@ -95,8 +95,7 @@ def rect_filter(contours_poly, bound_rect):
 
 
 
-#IMG_PATH = os.path.join(os.path.dirname(__file__), "int_img6.jpg")
-IMG_PATH = '/Users/thomasmacbookair/Desktop/ITSP/int_img6.jpg'
+IMG_PATH = os.path.join(os.path.dirname(__file__), "int_img6.jpg")
 kernel = np.ones((3,3), np.uint8)
 
 img = cv.imread(IMG_PATH) 
