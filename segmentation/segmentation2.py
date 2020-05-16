@@ -7,7 +7,11 @@ import random as rnd
 def thresh_callback(val):
     threshold = val
 
-    canny_img = cv.Canny(img_gray, threshold, threshold*2)
+    #canny_img = cv.Canny(img_gray, threshold, threshold*2)
+    canny_img = img_gray  
+    ##note:- replaced canny with simple gray
+    ##canny causes too much clutter and forms repeated contours
+
     contours, _ = cv.findContours(canny_img, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
     contours_poly = [None]*len(contours)
@@ -15,13 +19,13 @@ def thresh_callback(val):
 
     for i, c in enumerate(contours):
         contours_poly[i] = cv.approxPolyDP(c, 3, True)
+        #contours_poly[i] = contours[i]
         bound_rect[i] = cv.boundingRect(contours_poly[i])
     
     contours_poly_new, bound_rect_new, contours_poly_rep = rect_filter(contours_poly, bound_rect)
     drawing = np.zeros((canny_img.shape[0], canny_img.shape[1], 3), dtype = np.uint8)
 
     for i in range(len(contours_poly_new)):
-        color = (rnd.randint(0, 256), rnd.randint(0, 256), rnd.randint(0, 256))
         cv.drawContours(drawing, contours_poly_new, i, (255, 255, 255))
         cv.rectangle(drawing, (bound_rect_new[i][0], bound_rect_new[i][1]), ((bound_rect_new[i][0] + bound_rect_new[i][2]), (bound_rect_new[i][1] + bound_rect_new[i][3])), (0, 0, 255), 2)
 
@@ -95,17 +99,25 @@ def rect_filter(contours_poly, bound_rect):
 
 
 
-IMG_PATH = os.path.join(os.path.dirname(__file__), "int_img6.jpg")
+IMG_PATH = os.path.join(os.path.dirname(__file__), "int_img4.jpg")
 kernel = np.ones((3,3), np.uint8)
 
 img = cv.imread(IMG_PATH) 
 img = cv.resize(img, (650, 650), interpolation = cv.INTER_CUBIC)
-_, img_gray = cv.threshold(img, 50, 255, cv.THRESH_BINARY_INV)
-img_gray = cv.dilate(img_gray, kernel, iterations = 10)
-img_gray = cv.blur(img, (3,3))
+img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+_, img_gray = cv.threshold(img_gray, 90, 255, cv.THRESH_BINARY_INV)
+img_gray = cv.blur(img_gray, (3,3))
+
+
+img_gray = cv.dilate(img_gray, kernel, iterations = 1)
+cv.imshow('gray', img_gray)
+
 cv.namedWindow('Source')
 cv.imshow('Source', img)
-cv.imshow('GRAY', img_gray)
+
+
+
 
 def_thresh = 100
 max_thresh = 255
