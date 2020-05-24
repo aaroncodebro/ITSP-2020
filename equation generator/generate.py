@@ -158,88 +158,136 @@ def shift(img,sx,sy):
 list_digits = []
 for i in range(10):
     list_digits.append(listdir(read_path+"/"+str(i)))
+list_int = listdir(read_path+"/int")  #added 21/05 -v
+list_d = listdir(read_path+"/d")  #added 21/05 -v
 list_plus = listdir(read_path+"/+")
 list_minus = listdir(read_path+"/-")
-list_lt = listdir(read_path+"/lt")
-list_gt= listdir(read_path+"/gt")
-list_leq = listdir(read_path+"/leq")
-list_geq = listdir(read_path+"/geq")
-list_neq = listdir(read_path+"/neq")
-list_equal = listdir(read_path+"/=")
 
-list_alpha = listdir(read_path+"/alpha")
-list_beta = listdir(read_path+"/beta")
-list_lambda = listdir(read_path+"/lambda")
+#commented 22/05 -p
+#list_lt = listdir(read_path+"/lt")
+#list_gt= listdir(read_path+"/gt")
+#list_leq = listdir(read_path+"/leq")
+#list_geq = listdir(read_path+"/geq")
+#list_neq = listdir(read_path+"/neq")
+#list_equal = listdir(read_path+"/=")
+list_sin= listdir(read_path+"/sin") #added 22/05 -p
+list_cos= listdir(read_path+"/cos") #added 22/05 -p
+list_tan= listdir(read_path+"/tan") #added 22/05 -p
+#list_alpha = listdir(read_path+"/alpha")
+#list_beta = listdir(read_path+"/beta")
+#list_lambda = listdir(read_path+"/lambda")
 list_x = listdir(read_path+"/x")
-list_y = listdir(read_path+"/y")
+#list_y = listdir(read_path+"/y")
 
 if train: 
     for i in range(10):
         list_digits[i] = list_digits[i][len(list_digits[i])//4:]
+    list_int = list_int[len(list_int)//4:]      #added 21/05 -v
+    list_d = list_d[len(list_d)//4:]      #added 21/05 -v
     list_plus = list_plus[len(list_plus)//4:]
     list_minus = list_minus[len(list_minus)//4:]
-    list_lt = list_lt[len(list_lt)//4:]
-    list_gt = list_gt[len(list_gt)//4:]
-    list_leq = list_leq[len(list_leq)//4:]
-    list_geq = list_geq[len(list_geq)//4:]
-    list_neq = list_neq[len(list_neq)//4:]
-    list_equal = list_equal[len(list_equal)//4:]
-    list_alpha = list_alpha[len(list_alpha)//4:]
-    list_beta = list_beta[len(list_beta)//4:]
-    list_lambda = list_lambda[len(list_lambda)//4:]
+    #commented 22/05 -p
+    #list_lt = list_lt[len(list_lt)//4:]
+    #list_gt = list_gt[len(list_gt)//4:]
+    #list_leq = list_leq[len(list_leq)//4:]
+    #list_geq = list_geq[len(list_geq)//4:]
+    #list_neq = list_neq[len(list_neq)//4:]
+    #list_equal = list_equal[len(list_equal)//4:]
+    list_sin = list_sin[len(list_sin)//4:]  #added 22/05 -p
+    list_cos = list_cos[len(list_cos)//4:]  #added 22/05 -p
+    list_tan = list_tan[len(list_tan)//4:]  #added 22/05 -p
+    #list_alpha = list_alpha[len(list_alpha)//4:]
+    #list_beta = list_beta[len(list_beta)//4:]
+    #list_lambda = list_lambda[len(list_lambda)//4:]
     list_x = list_x[len(list_x)//4:]
-    list_y = list_y[len(list_y)//4:]
+    #list_y = list_y[len(list_y)//4:]
 else:
     for i in range(10):
         list_digits[i] = list_digits[i][:len(list_digits[i])//4]
+    list_int = list_int[:len(list_int)//4]      #added 21/05 -v  
+    list_d = list_d[:len(list_d)//4]      #added 21/05 -v
     list_plus = list_plus[:len(list_plus)//4]
     list_minus = list_minus[:len(list_minus)//4]
-    list_lt = list_lt[:len(list_lt)//4]
-    list_gt = list_gt[:len(list_gt)//4]
-    list_leq = list_leq[:len(list_leq)//4]
-    list_geq = list_geq[:len(list_geq)//4]
-    list_neq = list_neq[:len(list_neq)//4]
-    list_equal = list_equal[:len(list_equal)//4]
-    list_alpha = list_alpha[:len(list_alpha)//4]
-    list_beta = list_beta[:len(list_beta)//4]
-    list_lambda = list_lambda[:len(list_lambda)//4]
+    #commented 22/05 -p
+    #list_lt = list_lt[:len(list_lt)//4]
+    #list_gt = list_gt[:len(list_gt)//4]
+    #list_leq = list_leq[:len(list_leq)//4]
+    #list_geq = list_geq[:len(list_geq)//4]
+    #list_neq = list_neq[:len(list_neq)//4]
+    #list_equal = list_equal[:len(list_equal)//4]
+    list_sin = list_sin[:len(list_sin)//4]  #added 22/05 -p
+    list_cos = list_cos[:len(list_sin)//4]  #added 22/05 -p
+    list_tan = list_tan[:len(list_sin)//4]  #added 22/05 -p
+    #list_alpha = list_alpha[:len(list_alpha)//4]
+    #list_beta = list_beta[:len(list_beta)//4]
+    #list_lambda = list_lambda[:len(list_lambda)//4]
     list_x = list_x[:len(list_x)//4]
-    list_y = list_y[:len(list_y)//4]
+    #list_y = list_y[:len(list_y)//4]
 
 list_mid = [list_minus,list_plus]
-list_end = [list_lt,list_gt,list_leq,list_geq,list_neq,list_equal]  
-list_variables = [list_alpha,list_beta,list_lambda,list_x,list_y]
-var_names = ["#alpha","#beta","#lambda","x","y"]
+#commented 22/05 -p
+#list_end = [list_lt,list_gt,list_leq,list_geq,list_neq,list_equal]  
+list_end = [list_sin,list_cos,list_tan]  #added 22/05 -p
+list_end_str=["sin","cos","tan"] #added 22/05 -v
+#commented 22/05 -p
+#list_variables = [list_alpha,list_beta,list_lambda,list_x,list_y]
+list_variables = [list_x]  #added 22/05 -p
+var_names = ["x"]
     
 # os.mkdir(write_path_add)
 bounding_boxes = []
-for i in range(5000):
+for i in range(50):
     random_name = str(np.random.randint(1,99999))
-    img = np.zeros((140,60*(4+4+4)))
-    rand_num_1 = np.random.randint(1,1000)
-    rand_num_2 = np.random.randint(1,1000)
+    img = np.zeros((140,60*(4+4+12)))
+    ## trignometrsing digits :P
+    random_trig_1 =  np.random.randint(1,3)  #used to decide if digit is a number or a trig func added 22/05 -v
+    random_trig_2 =  np.random.randint(1,3)  #used to decide if digit is a number or a trig func added 22/05 -v
+    rand_num_1=0
+    if random_trig_1 ==1:
+        rand_num_1 = np.random.randint(1,1000)
+        rand_num_1_lat= str( rand_num_1)
+    else:
+        rand_num_1 = list_end_str[np.random.randint(0,3)]
+        rand_num_1_lat= str( rand_num_1 + "x")
+    if random_trig_2 ==1:
+        rand_num_2 = np.random.randint(1,1000)
+        rand_num_2_lat= str( rand_num_2)
+    else:
+        rand_num_2 = list_end_str[np.random.randint(0,3)]
+        rand_num_2_lat= str( rand_num_2 + "x")
+        ## 22/05 -v
+        
     mid = np.random.randint(2)
     if mid:
         mid_str = "+"
-        result = rand_num_1+rand_num_2
+       # result = rand_num_1+rand_num_2
     else:
         mid_str = "-"
-        result = rand_num_1-rand_num_2
-    result_type = np.random.randint(6)
+       # result = rand_num_1-rand_num_2
+    result = np.random.randint(1,1000)  ##the above lines have been commented by me 
+                                        #to remove errors when rand nos are not actually nos
+                                        #result is now a randomly generated number 
+    
+    result_type = np.random.randint(3)
     if result_type == 0:
-        end_str = " #lt "
+        #end_str = " #lt "
+        end_str = " #sin"
         result += np.random.randint(100)
     elif result_type == 1:
-        end_str = " #gt "
+        #end_str = " #gt "
+        end_str = " #cos "
         result -= np.random.randint(100)
     elif result_type == 2:
-        end_str = " #leq "
+        #end_str = " #leq "
+        end_str = " #tan "
         result += np.random.randint(100)
     elif result_type == 3:
-        end_str = " #geq "
+        #end_str = " #geq "
+        end_str = " #sin"
         result -= np.random.randint(100)
     elif result_type == 4:
-        end_str = " #neq "
+        #end_str = " #neq "
+        end_str = " #cos "
         result += 1+np.random.randint(100)
     else:
         end_str = " = "
@@ -255,12 +303,42 @@ for i in range(5000):
     rand_num_2_str = str(rand_num_2)
     result_str = str(result)
     num_strs = [rand_num_1_str,rand_num_2_str,result_str]
-    filename = rand_num_1_str+var+exp+mid_str+rand_num_2_str+end_str+result_str+"_"+random_name+".jpg"
+    filename = rand_num_1_lat+var+exp+mid_str+rand_num_2_lat+end_str+result_str+"_"+random_name+".jpg"
     print("Filename: ", filename)
     bounding_box = [{'filename': filename}]
     padding = 5
     class_names = []
+    
+    ##adding the integral to image
+    img, padding, new_bounding_box = add_symbol_to_image(img,'int',list_int,
+                                                                     padding,70,75)
+    bounding_box.append(new_bounding_box)
+    class_names.append('int')
+    #added 21/05 - v
+    
     for k in range(3):
+        if(num_strs[k]=="sin" or num_strs[k]=="cos" or num_strs[k]=="tan" ):
+            if num_strs[k]=="sin":
+                result_typevik=0
+            elif(num_strs[k]=="cos"):
+                result_typevik=1
+            else:
+                result_typevik=2
+            img, padding, new_bounding_box = add_symbol_to_image(img,num_strs[k],list_end[result_typevik],
+                                                                     padding,39,54)
+            bounding_box.append(new_bounding_box)
+            class_names.append(num_strs[k])
+            #adding x to sin
+            img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55)
+            bounding_box.append(new_bounding_box)
+            class_names.append('x')
+            img, padding, new_bounding_box = add_symbol_to_image(img,mid_str,list_mid[mid],
+                                                                     padding,39,54)
+            bounding_box.append(new_bounding_box)
+            class_names.append(mid_str)
+            continue
+         ## sin cos tan code ends here 
         for j in range(len(num_strs[k])):
             if j == 0 and num_strs[k][0] == '-':
                 img, padding, new_bounding_box = add_symbol_to_image(img,'-',list_minus,padding,39,45)
@@ -298,6 +376,24 @@ for i in range(5000):
                                                                      padding,39,54)
             bounding_box.append(new_bounding_box)
             class_names.append(end_str_crop)
+            #adding x to sin
+            img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55)
+            bounding_box.append(new_bounding_box)
+            class_names.append('x')
+            #added 22/05 -p
+            
+    ##adding the dx to image
+    img, padding, new_bounding_box = add_symbol_to_image(img,'d',list_d,
+                                                                     padding,50,55)
+    bounding_box.append(new_bounding_box)
+    class_names.append('d')
+    img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55)
+    bounding_box.append(new_bounding_box)
+    class_names.append('x')
+    
+    #added 21/05 - v        
             
     bounding_boxes.append(bounding_box)
     img = invert(img)+254
@@ -314,6 +410,9 @@ for i in range(5000):
     
     io.imsave(formula_path+"/"+filename, img/255)
     print("Finished: ", i)
+    
+    
+    
 
 # fractions
 list_digits = []
@@ -321,75 +420,119 @@ for i in range(10):
     list_digits.append(listdir(read_path+"/"+str(i)))
 list_plus = listdir(read_path+"/+")
 list_minus = listdir(read_path+"/-")
-list_leq = listdir(read_path+"/leq")
-list_geq = listdir(read_path+"/geq")
-list_neq = listdir(read_path+"/neq")
-list_equal = listdir(read_path+"/=")
+#commented 22/05 -p
+#list_leq = listdir(read_path+"/leq")
+#list_geq = listdir(read_path+"/geq")
+#list_neq = listdir(read_path+"/neq")
+#list_equal = listdir(read_path+"/=")
+list_sin = listdir(read_path+"/sin")  #added 22/05 -p
+list_cos = listdir(read_path+"/cos")  #added 22/05 -p
+list_tan = listdir(read_path+"/tan")  #added 22/05 -p
 
-list_alpha = listdir(read_path+"/alpha")
-list_beta = listdir(read_path+"/beta")
-list_lambda = listdir(read_path+"/lambda")
+#list_alpha = listdir(read_path+"/alpha")
+#list_beta = listdir(read_path+"/beta")
+#list_lambda = listdir(read_path+"/lambda")
 list_x = listdir(read_path+"/x")
-list_y = listdir(read_path+"/y")
+#list_y = listdir(read_path+"/y")
 
 if train: 
     for i in range(10):
         list_digits[i] = list_digits[i][len(list_digits[i])//4:]
+    list_int = list_int[len(list_int)//4:]      #added 21/05 -vikram
     list_plus = list_plus[len(list_plus)//4:]
     list_minus = list_minus[len(list_minus)//4:]
-    list_leq = list_leq[len(list_leq)//4:]
-    list_geq = list_geq[len(list_geq)//4:]
-    list_neq = list_neq[len(list_neq)//4:]
-    list_equal = list_equal[len(list_equal)//4:]
-    list_alpha = list_alpha[len(list_alpha)//4:]
-    list_beta = list_beta[len(list_beta)//4:]
-    list_lambda = list_lambda[len(list_lambda)//4:]
+    #commented 22/05 -p
+    #list_leq = list_leq[len(list_leq)//4:]
+    #list_geq = list_geq[len(list_geq)//4:]
+    #list_neq = list_neq[len(list_neq)//4:]
+    #list_equal = list_equal[len(list_equal)//4:]
+    list_sin = list_sin[len(list_sin)//4:]   #added 22/05 -p
+    list_cos = list_cos[len(list_cos)//4:]   #added 22/05 -p
+    list_tan = list_tan[len(list_tan)//4:]   #added 22/05 -p
+    #list_alpha = list_alpha[len(list_alpha)//4:]
+    #list_beta = list_beta[len(list_beta)//4:]
+    #list_lambda = list_lambda[len(list_lambda)//4:]
     list_x = list_x[len(list_x)//4:]
-    list_y = list_y[len(list_y)//4:]
+    #list_y = list_y[len(list_y)//4:]
 else:
     for i in range(10):
         list_digits[i] = list_digits[i][:len(list_digits[i])//4]
+    list_int = list_int[:len(list_int)//4]      #added 21/05 -vikram 
     list_plus = list_plus[:len(list_plus)//4]
     list_minus = list_minus[:len(list_minus)//4]
-    list_leq = list_leq[:len(list_leq)//4]
-    list_geq = list_geq[:len(list_geq)//4]
-    list_neq = list_neq[:len(list_neq)//4]
-    list_equal = list_equal[:len(list_equal)//4]
-    list_alpha = list_alpha[:len(list_alpha)//4]
-    list_beta = list_beta[:len(list_beta)//4]
-    list_lambda = list_lambda[:len(list_lambda)//4]
+    #commented 22/05 -p
+    #list_leq = list_leq[:len(list_leq)//4]
+    #list_geq = list_geq[:len(list_geq)//4]
+    #list_neq = list_neq[:len(list_neq)//4]
+    #list_equal = list_equal[:len(list_equal)//4]
+    list_sin = list_sin[:len(list_sin)//4]   #added 22/05 -p
+    list_cos = list_cos[:len(list_cos)//4]   #added 22/05 -p
+    list_tan = list_tan[:len(list_tan)//4]   #added 22/05 -p
+    #list_alpha = list_alpha[:len(list_alpha)//4]
+    #list_beta = list_beta[:len(list_beta)//4]
+    #list_lambda = list_lambda[:len(list_lambda)//4]
     list_x = list_x[:len(list_x)//4]
-    list_y = list_y[:len(list_y)//4]
+    #list_y = list_y[:len(list_y)//4]
 
 list_mid = [list_minus,list_plus]
-list_end = [list_leq,list_geq,list_neq,list_equal]  
-list_variables = [list_alpha,list_beta,list_lambda,list_x,list_y]
-var_names = ["#alpha","#beta","#lambda","x","y"]
+#commented 22/05 -p
+#list_end = [list_leq,list_geq,list_neq,list_equal]
+list_end = [list_sin,list_cos,list_tan]  #added 22/05 -p
+#list_variables = [list_alpha,list_beta,list_lambda,list_x,list_y]
+list_variables = [list_x]  #added 22/05 -p
+var_names = ["x"]
     
 # os.mkdir(write_path_add)
 bounding_boxes = []
-for i in range(20000):
+for i in range(50):
     random_name = str(np.random.randint(1,99999))
-    img = np.zeros((200,60*(4+4+4)))
-    rand_num_1 = np.random.randint(1,1000)
+    img = np.zeros((200,75*(4+4+10)))
+    ## trignometrsing digits :P
+    random_trig_1 =  np.random.randint(1,3)  #used to decide if digit is a number or a trig func added 22/05 -v
+    random_trig_2 =  np.random.randint(1,3)  #used to decide if digit is a number or a trig func added 22/05 -v
+    #random_trig_3 =  np.random.randint(1,3)  #used to decide if digit is a number or a trig func added 22/05 -v
+    rand_num_1=0
+    if random_trig_1 ==1:
+        rand_num_1 = np.random.randint(1,1000)
+        rand_num_1_lat= str( rand_num_1)
+    else:
+        rand_num_1 = list_end_str[np.random.randint(0,3)]
+        rand_num_1_lat= str( rand_num_1 + "x")
+    if random_trig_2 ==1:
+        rand_num_2 = np.random.randint(1,1000)
+        rand_num_2_lat= str( rand_num_2 )
+    else:
+        rand_num_2 = list_end_str[np.random.randint(0,3)]
+        rand_num_2_lat= str( rand_num_2 + "x")
+        ## 22/05 -v
+    #if random_trig_3 ==1:
+    #    rand_num_1_1 = np.random.randint(1,1000)
+    #else:
+    #    rand_num_1_1 = list_end_str[np.random.randint(0,3)]
+        ## 22/05 -v    
+    #rand_num_1 = np.random.randint(1,1000)
     rand_num_1_1 = np.random.randint(1,1000)
-    rand_num_2 = np.random.randint(1,1000)
+    #rand_num_2 = np.random.randint(1,1000)
     mid = np.random.randint(2)
     if mid:
         mid_str = "+"
-        result = rand_num_1+rand_num_2
+        #result = rand_num_1+rand_num_2
     else:
         mid_str = "-"
-        result = rand_num_1-rand_num_2
-    result_type = np.random.randint(4)
+        #result = rand_num_1-rand_num_2
+    result = np.random.randint(1,1000) ##result doesnt have any significance
+    result_type = np.random.randint(3)
     if result_type == 0:
-        end_str = " #leq "
+        #end_str = " #leq "
+        end_str = " #sin"
         result += np.random.randint(100)
     elif result_type == 1:
-        end_str = " #geq "
+        #end_str = " #geq "
+        end_str = " #cos "
         result -= np.random.randint(100)
     elif result_type == 2:
-        end_str = " #neq "
+        #end_str = " #neq "
+        end_str = " #tan "
         result += 1+np.random.randint(100)
     else:
         end_str = " = "
@@ -406,26 +549,101 @@ for i in range(20000):
     rand_num_2_str = str(rand_num_2)
     result_str = str(result)
     num_strs = [rand_num_1_str,rand_num_1_1_str,rand_num_2_str,result_str]
-    filename = "#frac{"+rand_num_1_str+"}{"+rand_num_1_1_str+"}"+var+exp+mid_str+rand_num_2_str+end_str+result_str+"_"+random_name+".jpg"
+    filename = "#frac{"+rand_num_1_lat+"}{"+rand_num_1_1_str+"}"+var+exp+mid_str+rand_num_2_lat+end_str+result_str+"_"+random_name+".jpg"
     print("Filename: ", filename)
     bounding_box = [{'filename': filename}]
     padding = 5
     padding_den = 5
     start_padding = 5
     class_names = []
-    for k in range(len(num_strs)):
+    
+    ##adding the integral to image
+    digit = 'int'
+    img, padding, new_bounding_box = add_symbol_to_image(img,'int',list_int,
+                                                                     padding,90,95)
+    bounding_box.append(new_bounding_box)
+    class_names.append('int')
+    #added 21/05 - v
+    
+    for k in range(len(num_strs)):        
+        if k == 0:                
+            if(num_strs[k]=="sin" or num_strs[k]=="cos" or num_strs[k]=="tan" ):
+                    if num_strs[k]=="sin":
+                        result_typevik=0
+                    elif(num_strs[k]=="cos"):
+                        result_typevik=1
+                    else:
+                        result_typevik=2
+                    img, padding, new_bounding_box = add_symbol_to_image(img,num_strs[k],list_end[result_typevik],
+                                                                     padding,39,54,bnom= True)
+                    bounding_box.append(new_bounding_box)
+                    class_names.append(num_strs[k])
+                    #adding x to sin
+                    img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55,bnom=True)
+                    bounding_box.append(new_bounding_box)
+                    class_names.append('x')
+                    continue
+        elif k == 1:                
+            if(num_strs[k]=="sin" or num_strs[k]=="cos" or num_strs[k]=="tan" ):
+                    if num_strs[k]=="sin":
+                        result_typevik=0
+                    elif(num_strs[k]=="cos"):
+                        result_typevik=1
+                    else:
+                        result_typevik=2
+                    img, padding_den, new_bounding_box = add_symbol_to_image(img,num_strs[k],list_end[result_typevik],
+                                                                     padding,39,54,bden=True)
+                    bounding_box.append(new_bounding_box)
+                    class_names.append(num_strs[k])
+                    #adding x to sin
+                    img, padding_den, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55,bden=True)
+                    bounding_box.append(new_bounding_box)
+                    class_names.append('x')
+                    img, padding, new_bounding_box = add_symbol_to_image(img,mid_str,list_mid[mid],
+                                                                         padding,39,54)
+                    bounding_box.append(new_bounding_box)
+                    class_names.append(mid_str)
+                    continue
+        else:
+            if(num_strs[k]=="sin" or num_strs[k]=="cos" or num_strs[k]=="tan" ):
+                if num_strs[k]=="sin":
+                    result_typevik=0
+                elif(num_strs[k]=="cos"):
+                    result_typevik=1
+                else:
+                    result_typevik=2
+                img, padding, new_bounding_box = add_symbol_to_image(img,num_strs[k],list_end[result_typevik],
+                                                                     padding,39,54)
+                bounding_box.append(new_bounding_box)
+                class_names.append(num_strs[k])
+                #adding x to sin
+                img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,35,39)
+                bounding_box.append(new_bounding_box)
+                class_names.append('x')
+                img, padding, new_bounding_box = add_symbol_to_image(img,mid_str,list_mid[mid],
+                                                                         padding,39,54)
+                bounding_box.append(new_bounding_box)
+                class_names.append(mid_str)
+                continue
+        
+        
         for j in range(len(num_strs[k])):   
             if j == 0 and num_strs[k][0] == '-':
                 img, padding, new_bounding_box = add_symbol_to_image(img,'-',list_minus,padding,39,45)
                 bounding_box.append(new_bounding_box)
                 class_names.append('-')
             elif k == 0:
+                
                 digit = int(num_strs[k][j])
                 img, padding, new_bounding_box = add_symbol_to_image(img,str(digit),list_digits[digit],
                                                                      padding,40,45,bnom=True)
                 bounding_box.append(new_bounding_box)
                 class_names.append(str(digit))
-            elif k == 1:
+            elif k==1:
+                
                 digit = int(num_strs[k][j])
                 img, padding_den, new_bounding_box = add_symbol_to_image(img,str(digit),list_digits[digit],
                                                                      padding_den,40,45,bden=True)
@@ -469,7 +687,17 @@ for i in range(20000):
                                                                      padding,39,54)
             bounding_box.append(new_bounding_box)
             class_names.append(end_str_crop)
-            
+            ##adding the dx to image
+    img, padding, new_bounding_box = add_symbol_to_image(img,'d',list_d,
+                                                                     padding,50,55)
+    bounding_box.append(new_bounding_box)
+    class_names.append('d')
+    img, padding, new_bounding_box = add_symbol_to_image(img,'x',list_x,
+                                                                     padding,50,55)
+    bounding_box.append(new_bounding_box)
+    class_names.append('x')
+    
+    #added 21/05 - v 
     bounding_boxes.append(bounding_box)
     img = invert(img)+254
 #     plt.figure(figsize=(20,10))
