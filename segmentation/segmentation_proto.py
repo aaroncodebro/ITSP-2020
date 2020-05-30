@@ -1,3 +1,4 @@
+import os
 import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,8 +9,8 @@ rnd.seed(1)
 def b_box(val):
     global fac
     threshold = val
-
-    canny_img = cv.Canny(img_out, threshold, threshold*2)
+    
+    canny_img = img_out
     contours, _ = cv.findContours(canny_img, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
     contours_poly = [None]*len(contours)
@@ -75,8 +76,7 @@ def rect_filter(contours_poly, bound_rect):
 
     return contours_poly_new, bound_rect_new, contours_poly_rep
 
-
-IMG_PATH = '/Users/thomasmacbookair/Desktop/ITSP/test2.jpg'
+IMG_PATH = os.path.join(os.path.dirname(__file__), 'int_img3.jpg')
 kernel = np.ones((3,3), np.uint8)
 
 img = cv.imread(IMG_PATH) 
@@ -96,6 +96,7 @@ img_out = img_ffill_inv | img_gray
 img_out = cv.erode(img_out, kernel)
 img_out = cv.dilate(img_out, kernel)
 
+cv.imshow('Original', img)
 cv.imshow('Floodfill', img_out)
 cv.imshow('GRAY', img_gray)
 
