@@ -5,7 +5,7 @@ import random as rnd
 
 rnd.seed(1)
 
-def thresh_callback(val):
+def b_box(val):
     global fac
     threshold = val
 
@@ -85,7 +85,6 @@ img = cv.resize(img, (650, 650), interpolation = cv.INTER_CUBIC)
 img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 _, img_gray = cv.threshold(img_gray, 90, 255, cv.THRESH_BINARY_INV)
 img_gray = cv.dilate(img_gray, kernel, iterations = 2)
-#img_gray = cv.blur(img_gray, (3, 3))
 
 h, w = img_gray.shape[:2]
 mask = np.zeros((h+2, w+2), dtype = np.uint8)
@@ -101,6 +100,6 @@ cv.imshow('Floodfill', img_out)
 cv.imshow('GRAY', img_gray)
 
 def_thresh = 100
-thresh_callback(def_thresh)
+b_box(def_thresh)
 
 cv.waitKey()
